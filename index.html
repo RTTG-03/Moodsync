@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MoodSync</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <p class="tagline">YOUR MUSIC. YOUR MOMENT.</p>
+    <h1>Welcome to MoodSync</h1>
+    <p class="intro">A simple music companion for how you feel right now.</p>
+
+    <section class="card">
+      <h2>Demo wearable readings</h2>
+      <p class="note">Sample inputs for this prototype — no wearable is connected.</p>
+
+      <label for="heartRate">Heart rate (bpm)</label>
+      <input id="heartRate" type="number" value="78" min="40" max="180">
+
+      <label for="sleep">Sleep last night (hours)</label>
+      <input id="sleep" type="number" value="7" min="0" max="24" step="0.5">
+
+      <label for="activity">Activity today</label>
+      <select id="activity">
+        <option value="low">Low</option>
+        <option value="medium" selected>Moderate</option>
+        <option value="high">High</option>
+      </select>
+    </section>
+
+    <section class="card">
+      <h2>Add your own context <span>(optional)</span></h2>
+
+      <label for="mood">How are you feeling?</label>
+      <select id="mood">
+        <option value="">Skip this</option>
+        <option value="calm">Calm</option>
+        <option value="low">A little low</option>
+        <option value="energetic">Energetic</option>
+        <option value="stressed">Stressed</option>
+      </select>
+
+      <button id="analyseButton">Get my music suggestions</button>
+    </section>
+
+    <section class="card result" id="result" aria-live="polite">
+      <h2>Your mood estimate will appear here</h2>
+      <p>This demo uses simple rules. It does not diagnose emotions or health.</p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
