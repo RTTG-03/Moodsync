@@ -90,6 +90,7 @@ function showResult(moodType, moodLabel, message, songList) {
     </select>
     <button id="feedbackButton">Update suggestions</button>
   `;
+    playRecommendedSong(songList[0]);
 
   document.getElementById("feedbackButton").addEventListener("click", function () {
     updateFeedback(moodType, moodLabel);
@@ -116,5 +117,45 @@ function updateFeedback(moodType, moodLabel) {
 
   const list = result.querySelector("ul");
   list.innerHTML = newSongs.map(song => `<li>${song}</li>`).join("");
+    playRecommendedSong(newSongs[0]);
   result.querySelector("ul").previousElementSibling.textContent = message;
+}
+const youtubeVideoIds = {
+  "Khuda Jaane — Vishal-Shekhar": "cmMiyZaSELo",
+  "Bairan — Banjaare": "oafxkMv4xnc",
+  "Arz Kiya Hai — Anuv Jain": "Kg8_ADYhYWE",
+  "Hookah Bar — Himesh Reshammiya": "b4b1cMVZOUU",
+  "Sooraj Dooba Hai — Amaal Mallik": "nJZcbidTutE",
+  "Kabira — Pritam": "jHNNMj5bNQw",
+  "Hale Dil — Harshit Saxena": "asahn7x2KG4",
+  "Tera Ghata — Gajendra Verma": "0KNk-Joi-NM",
+  "Gallan Goodiyan — Yashita Sharma": "jCEdTq3j-0U",
+  "Character Dheela — Pritam": "EHwlNAFzMso",
+  "Love Dose — Yo Yo Honey Singh": "TvngY4unjn4",
+
+  "Sunset Lover — Petit Biscuit": "4fQeaM62mOY",
+  "Levitating — Dua Lipa": "TUVcZfQe-Kw",
+  "Can't Stop the Feeling! — Justin Timberlake": "ru0K8uYEZWw",
+  "Walking on Sunshine — Katrina and the Waves": "iPUmE-tne5U",
+  "Golden Hour — JVKE": "PEM0Vs8jf1w",
+  "Sunflower — Post Malone & Swae Lee": "ApXoWvfEYVU",
+    "Bloom — The Paper Kites": "8inJtTG_DuU",
+  "Weightless — Marconi Union": "UfcAVejslrU",
+  "Dil Chori — Yo Yo Honey Singh": "f0D-JYNIDCc",
+};
+
+function playRecommendedSong(songName) {
+  const videoId = youtubeVideoIds[songName];
+  const playerCard = document.getElementById("playerCard");
+  const musicPlayer = document.getElementById("musicPlayer");
+  const nowPlaying = document.getElementById("nowPlaying");
+
+  if (!videoId) {
+    playerCard.hidden = true;
+    return;
+  }
+
+  playerCard.hidden = false;
+  nowPlaying.textContent = "Suggested song: " + songName;
+  musicPlayer.src = "https://www.youtube.com/embed/" + videoId;
 }
